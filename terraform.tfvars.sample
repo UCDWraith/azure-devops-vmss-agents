@@ -1,0 +1,23 @@
+resource_group_name  = "ado-vmss-agents"            # (Required) The name of the resource group for the Virtual Machine Scale Set.
+location             = "australiaeast"              # (Required) The location/region where the virtual network is created. Changing this forces a new resource to be created.
+vnet_name            = "vnet-ado-vmss-agents"       # (Required) The name of the virtual network to be created.
+address_space        = ["10.0.1.0/24"]              # (Required) The address space of the virtual network to be created.
+vmss_subnet_name     = "snet-ado-vmss-agents"       # (Required) The name of the subnet for the VMSS agents. (Bear in mind organizational standards and conventions).
+vmss_subnet          = ["10.0.1.16/28"]             # (Required) The subnet to which the virtual machine scale set will be deployed (This can be the same as the vnet).
+storage_subnet_name  = "snet-ado-tfstate"           # (Optional) The name of the subnet for the storage account. This project aims towards a restricted access back end tfstate with no public access to the blob.
+storage_subnet       = ["10.0.1.0/28"]              # (Optional) The subnet address prefix to create for the storage private endpoints (Comment out module if not required).
+vmss_name            = "vmss-ado-agents-dev"        # (Required) The name for your virtual machine scale set.
+admin_username       = "0b7cur3Admin"               # (Required) An obscure name for the admin user of your VMSS (By default it is disabled anyway).
+sku                  = "Standard_D2_v4"             # (Required) The VM sku, set the size according to your requirements.
+computer_name_prefix = "vm-vmss-ado-agents-dev"     # (Required) The virtual machines within the VMSS will be built as ${computer_name_prefix}001.
+instances            = 0                            # (Required) The default number of instances in the VMSS.
+
+tags = {
+  ProjectName   = "Azure DevOps Virtual Machine Scale Set agents"
+  Description   = "This project will deploy a virtual machine scale set for use as Azure DevOps agents. https://learn.microsoft.com/en-us/azure/devops/pipelines/agents/scale-set-agents?view=azure-devops"
+  Environment   = "Development"
+  Owner         = "Paul Shortt"
+  BusinessUnit  = "IT Operations"
+  ServiceClass  = "Bronze"
+  Support-Hours = "Mon - Fri 08:00 - 17:00"
+}

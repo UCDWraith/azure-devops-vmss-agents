@@ -1,0 +1,24 @@
+{
+    "name": "Network_Rules_Basic_Services",
+    "ruleset": "001",
+    "security_rules": [
+        {
+            "name": "AllowOB_HTTPS",
+            "priority": 100,
+            "direction": "Outbound",
+            "access": "Allow",
+            "protocol": "Tcp",
+            "source_port_range": "*",
+            "destination_port_range": "443",
+            "source_address_prefix": "*",
+            "destination_address_prefix": "Internet",
+            "description": "Allow outbound HTTPS to Internet"
+        }
+    ],
+    "rfc_number": [],
+    "affected_services": [],
+    "reference": [
+        "https://learn.microsoft.com",
+        "internal document refernce/design guide"
+    ]
+}
